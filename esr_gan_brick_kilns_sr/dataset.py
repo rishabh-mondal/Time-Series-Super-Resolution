@@ -38,3 +38,24 @@ class SRDataset(Dataset):
         hr_img = self.hr_transform(hr_img)
 
         return lr_img, hr_img
+    
+class TestSRDataset(Dataset):
+    def __init__(self, lr_dir,lr_size=(480, 480)):
+        self.lr_dir = lr_dir
+        self.lr_images = os.listdir(lr_dir)
+        self.lr_size = lr_size
+
+        # Define transforms
+        self.lr_transform = transforms.Compose([
+            transforms.Resize(self.lr_size),
+            transforms.ToTensor()
+        ])
+
+    def __len__(self):
+        return len(self.lr_images)
+
+    def __getitem__(self, idx):
+        lr_img_path = os.path.join(self.lr_dir, self.lr_images[idx])
+        lr_img = Image.open(lr_img_path).convert('RGB')
+        lr_img = self.lr_transform(lr_img)
+        return lr_img, self.lr_images[idx]    
