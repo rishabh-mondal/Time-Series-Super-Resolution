@@ -1,0 +1,4 @@
+crossval_sr/
+*.log
+*.pt
+runs/
