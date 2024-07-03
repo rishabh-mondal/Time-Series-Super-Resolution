@@ -1,6 +1,6 @@
 # main.py
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 import torch
 import torch.optim as optim
 from torch.utils.data import DataLoader
@@ -71,4 +71,4 @@ for epoch in range(num_epochs):
     print(f'Validation Loss: {val_loss:.4f}')
 
 # Save the trained model
-torch.save(model.state_dict(), 'fine_tuned_model.pth')
+torch.save(model.state_dict(), '/home/rishabh.mondal/Brick-Kilns-project/albk_rishabh/albk_v2/YOLO_LOCALIZATION/super_res_exp/Time-Series-Super-Resolution/esr_gan_brick_kilns_sr/licknow_sarath_fine_tuned_esrgan_epochs_100.pth')
